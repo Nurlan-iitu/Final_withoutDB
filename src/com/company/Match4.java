@@ -8,9 +8,9 @@ import java.awt.event.*;
 public class Match4 extends Container {
     private JLabel matchLabel = new JLabel("Atletico M  -  Liverpool");
     private JLabel actionLabel = new JLabel("select a bid");
-    private JRadioButton W1 = new JRadioButton("W1");
-    private JRadioButton X = new JRadioButton("X");
-    private JRadioButton W2 = new JRadioButton("W2");
+    private JComboBox betsBox;
+    private String[] bids = {"W1 - 3.16", "X - 3.03", "W2 - 2.49", "TM(2.5) - 2.5", "TL(2.5) - 1.67"};
+
     private JButton back = new JButton("Back");
     private JButton add = new JButton("Add to Cart");
     private JButton Cart= new JButton("Cart");
@@ -21,28 +21,24 @@ public class Match4 extends Container {
     public Match4(){
         setSize(500, 500);
         setLayout(null);
-
+        betsBox = new JComboBox(bids);
+        betsBox.setBounds(40,100,200,40);
+        add(betsBox);
         matchLabel.setBounds(150,20,200,20);
         add(matchLabel);
 
         actionLabel.setBounds(40,60,200,20);
         add(actionLabel);
-        W1.setBounds(40,100,60,20);
-        add(W1);
-        X.setBounds(120,100,60,20);
-        add(X);
-        W2.setBounds(200,100,60,20);
-        add(W2);
-        ButtonGroup group = new ButtonGroup();
-        group.add(W1);
-        group.add(X);
-        group.add(W2);
 
         add.setBounds(350,400,100,30);
         add(add);
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String matchName = "Atletico M  -  Liverpool";
+                String bet = (String)betsBox.getSelectedItem();
+                BetsCart bets = new BetsCart(matchName, bet);
+                Main.add(bets);
 
 
 

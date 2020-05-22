@@ -6,6 +6,12 @@ import java.net.Socket;
 
 public class Main {
     public static MainFrame frame;
+    public static BetsCart[] bets = new BetsCart[100];
+    public static int betCount = 0;
+
+    public static void add(BetsCart be){
+        bets[betCount++] = be;
+    }
 
     public static void connect(){
         try {
